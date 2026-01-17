@@ -28,7 +28,7 @@ def 随机Leetcode题目(level="all"):
     返回:
         str: 格式化后的题目信息字符串（仅含题目描述和约束），或错误信息
     """
-    data_file = "D:/QQ机器人/工作区域/AstrBot-4.11.4/data/plugins/自用插件"
+    data_file = ""
     os.makedirs(os.path.join(data_file, "Leetcode"), exist_ok=True)
 
     levels = {1: "简单", 2: "中等", 3: "困难"}
@@ -54,7 +54,6 @@ def 随机Leetcode题目(level="all"):
     if not free_problems:
         return "没有找到符合条件的免费题目"
 
-    # === 随机选题 ===
     selected = None
     attempts = 0
     max_attempts = 1000
@@ -73,7 +72,6 @@ def 随机Leetcode题目(level="all"):
     difficulty = levels.get(selected['difficulty']['level'], "未知")
     url = f"https://leetcode.cn/problems/{slug}/"
 
-    # === 步骤2：请求网页 ===
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
     }
@@ -126,7 +124,6 @@ def 随机Leetcode题目(level="all"):
     if "error" in result:
         return f"{result['error']}"
 
-    # === 步骤4：拼接返回字符串（仅题目描述 + 约束）===
     output = []
 
     output.append("=" * 5)
@@ -152,7 +149,7 @@ def 完整随机Leetcode题目(level="all"):
     返回:
         str: 格式化后的题目信息字符串（含题目描述、约束、输入输出示例），或错误信息
     """
-    data_file = "D:/QQ机器人/工作区域/AstrBot-4.11.4/data/plugins/自用插件"
+    data_file = ""
     os.makedirs(os.path.join(data_file, "Leetcode"), exist_ok=True)
 
     levels = {1: "简单", 2: "中等", 3: "困难"}
@@ -286,3 +283,4 @@ def 完整随机Leetcode题目(level="all"):
             output.append(ex)
 
     return "\n".join(output)
+
